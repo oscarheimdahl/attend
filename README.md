@@ -1,4 +1,8 @@
-_Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)_
+## Attend site
+
+#### Create events and share with friends to see who will come.
+
+---
 
 ---
 
