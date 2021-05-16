@@ -8,9 +8,11 @@
   const createEvent = async (e) => {
     e.preventDefault();
     eventID = hri.random();
-    const res = await db.collection('events').doc(eventID).set({
+    await db.collection('events').doc(eventID).set({
       name: eventName,
     });
+    // window.history.pushState('', '', eventID);
+
     // dispatch('showEvent', { eventID });
   };
 </script>

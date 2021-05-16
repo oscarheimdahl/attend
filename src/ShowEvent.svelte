@@ -1,6 +1,8 @@
 <script>
   export let db;
   export let eventID;
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
   let eventName;
   let attendees = [];
   let name = '';
@@ -20,6 +22,7 @@
 </script>
 
 <main>
+  <button on:click={() => dispatch('showEvent', { eventID: '' })}>Back</button>
   <h2>{eventName ?? ''}</h2>
   {#each attendees as attendee}
     {#if attendee === 'Oscar'}

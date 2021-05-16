@@ -1,28 +1,26 @@
 <script>
   import CreateEvent from './CreateEvent.svelte';
   import FindEvent from './FindEvent.svelte';
-  import Event from './Event.svelte';
+  import ShowEvent from './ShowEvent.svelte';
   import config from './firebase_config.js';
   import firebase from 'firebase/app';
   import 'firebase/firestore';
   firebase.initializeApp(config);
   const db = firebase.firestore();
 
-  let showingEvent = false;
   let eventID;
   const showEvent = (event) => {
     eventID = event.detail.eventID;
-    showingEvent = true;
   };
+  console.log(window.location.pathname);
 </script>
 
 <main>
-  {#if !showingEvent}
-    <CreateEvent on:showEvent={showEvent} setShowEvent={showEvent} {db} />
+  {#if !eventID}
+    <CreateEvent setShowEvent={showEvent} {db} />
     <FindEvent on:showEvent={showEvent} {db} />
-  {/if}
-  {#if showingEvent}
-    <Event {eventID} {db} />
+  {:else}
+    <ShowEvent on:showEvent={showEvent} {eventID} {db} />
   {/if}
 </main>
 
